@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 
 
-
+/**
+ * Das ist ein Projekt, um Java zu lernen
+ */
 public class GamePanel extends JPanel {
 
     public static final String IMAGE_DIR = "./images/";
