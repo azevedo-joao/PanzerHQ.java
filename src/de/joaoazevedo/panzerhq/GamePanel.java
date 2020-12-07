@@ -93,7 +93,7 @@ public class GamePanel extends JPanel {
 
         tanksDestroyedCounter++;
 
-        if(tanksDestroyedCounter > 254) {
+        if(tanksDestroyedCounter > 49) {
            endGame();
         }
         repaint();
@@ -110,13 +110,14 @@ public class GamePanel extends JPanel {
 
         g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 19));
         g.setColor(Color.BLUE);
-        g.drawString("Panzer zerstört: " + tanksDestroyedCounter, 22, prefSize.height / 2 - 2);
-
+        g.drawString("Panzer zerstört: " + tanksDestroyedCounter, 22, prefSize.height / 2 + 180);
+                                                                                    //Addieren bewegt nach unten
         if(isGameOver()) {
 
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 50));
             g.setColor(Color.RED);
-            g.drawString("GAME OVER!", prefSize.width / 2 - 450, prefSize.height / 5);
+            g.drawString("GAME OVER!", prefSize.width / 2 - 350, prefSize.height / 5);
+                                                            //höhere Zahl bewegt nach links
         }
     }
 }

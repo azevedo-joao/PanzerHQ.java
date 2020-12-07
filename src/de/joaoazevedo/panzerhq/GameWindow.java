@@ -16,7 +16,7 @@ public class GameWindow extends JFrame {
         this.panzerGamePanel = new GamePanel();
 
         JPanel fenster = new JPanel();
-        fenster.setPreferredSize(new Dimension(600,400));
+        fenster.setPreferredSize(new Dimension(800,600));
 
         registerWindowListener();
         createMenu();
