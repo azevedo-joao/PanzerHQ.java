@@ -6,14 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
-
-/**
- * Das ist ein Projekt, um Java zu lernen
- */
 public class GamePanel extends JPanel {
 
     public static final String IMAGE_DIR = "./images/";
-    private final Dimension prefSize = new Dimension(1180, 780);
+    private final Dimension prefSize = new Dimension(1200, 800);
 
     private ImageIcon backgroundImage;
     private final String[] backgroundImages = new String [] {"bg_mud.jpg", "bg_snow.jpg", "bg_sand.jpg"};
@@ -57,7 +53,7 @@ public class GamePanel extends JPanel {
     }
 
     private void initPlayersTank() {
-
+        //Panzer wird hier initialisiert
     }
 
     public void setBackgroundImage(int imageNumber) {
@@ -97,9 +93,10 @@ public class GamePanel extends JPanel {
 
         tanksDestroyedCounter++;
 
-        if(tanksDestroyedCounter > 2015) {
-            repaint();
+        if(tanksDestroyedCounter > 254) {
+           endGame();
         }
+        repaint();
     }
 
     @Override
@@ -113,13 +110,13 @@ public class GamePanel extends JPanel {
 
         g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 19));
         g.setColor(Color.BLUE);
-        g.drawString("Panzer zerstört: " + tanksDestroyedCounter, 22, prefSize.height / 5);
+        g.drawString("Panzer zerstört: " + tanksDestroyedCounter, 22, prefSize.height / 2 - 2);
 
         if(isGameOver()) {
 
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 50));
             g.setColor(Color.RED);
-            g.drawString("GAME OVER!", prefSize.width / 2 - 130, prefSize.height / 5);
+            g.drawString("GAME OVER!", prefSize.width / 2 - 450, prefSize.height / 5);
         }
     }
 }

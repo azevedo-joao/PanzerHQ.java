@@ -48,15 +48,55 @@ public class GameWindow extends JFrame {
         menuLeiste.add(einstellungenMenu);
 
         addFileMenuItems(dateiMenu);
+        addGameMenuItems(spielMenu);
     }
 
     private void addFileMenuItems(JMenu dateiMenu) {
+
         JMenuItem beenden = new JMenuItem("Beenden");
         dateiMenu.add(beenden);
         beenden.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                //System.exit(0);
+
+                //Fragt, ob der Nutzer das Spiel beenden möchte
+                String[] ObjButtons = {"Ja", "Nein"};
+                int promptResult = JOptionPane.showOptionDialog(null, "Möchstest du das Spiel wirklich beenden?", "Spiel beenden", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
+                if(promptResult == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+            }
+        });
+    }
+
+    private void addGameMenuItems(JMenu gameMenu) {
+
+        JMenuItem pauseItem = new JMenuItem("Pause");
+        gameMenu.add(pauseItem);
+        pauseItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panzerGamePanel.pauseGame();
+            }
+        });
+
+        JMenuItem continueItem = new JMenuItem("Continue");
+        gameMenu.add(continueItem);
+        continueItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panzerGamePanel.continueGame();
+            }
+        });
+
+        gameMenu.addSeparator();
+        JMenuItem restartItem = new JMenuItem("Restart");
+        gameMenu.add(restartItem);
+        restartItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panzerGamePanel.restartGame();
             }
         });
     }
@@ -80,12 +120,12 @@ public class GameWindow extends JFrame {
 
             @Override
             public void windowDeactivated(WindowEvent e) {
-                //Spiel pausieren
+                panzerGamePanel.pauseGame();
             }
 
             @Override
             public void windowActivated(WindowEvent e) {
-                //Spiel fortsetzen
+                panzerGamePanel.continueGame();
             }
         });
     }
